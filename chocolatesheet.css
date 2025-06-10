@@ -15,9 +15,10 @@ body {
 header {
     background-color: #5d4037;
     color: white;
-    padding: 20px;
+    padding: 30px;
     border-radius: 12px;
     position: center;
+    margin-bottom: 30px;
 }
 
 #logo {
@@ -27,10 +28,9 @@ header {
 }
 
 #logo img {
-    width: 120px;
+    width: 150px;
     height: auto;
     border-radius: 6px;
-
 }
 
 #logo:hover img {
@@ -39,29 +39,74 @@ header {
     cursor: pointer;
 }
 
-
 header h1 {
     text-align: center;
     margin-left: 60px;
+    font-size: 3.5rem;
+    margin-bottom: 15px;
 }
 
 nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-top: 10px;
+    gap: 40px;
+    margin-top: 15px;
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-weight: 600;
+    font-size: 1.4rem;
     align-items: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #logo {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #logo img {
+        width: 120px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    nav a {
+        font-size: 1.2rem;
+        padding: 8px 15px;
+    }
 }
 
 .section {
@@ -79,10 +124,41 @@ nav a:hover {
     color: #4e342e;
 }
 
+/* Add responsive font sizing for titles */
+@media (max-width: 1200px) {
+    .section h2 {
+        font-size: 5rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .section h2 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .section h2 {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .section h2 {
+        font-size: 2rem;
+    }
+}
+
 .section p {
     margin-bottom: 10px;
-    font-size: 1.5rem;
-    color: #4e342e;
+    font-size: 1.9rem;
+    color: #000000;
 }
 
 #introIm {
@@ -96,13 +172,65 @@ nav a:hover {
 #introIm img {
     width: 300px;
     border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+/* Add responsive image sizing */
+@media (max-width: 1200px) {
+    #introIm {
+        gap: 80px;
+    }
+
+    #introIm img {
+        width: 250px;
+    }
+}
+
+@media (max-width: 992px) {
+    #introIm {
+        gap: 60px;
+    }
+
+    #introIm img {
+        width: 220px;
+    }
+}
+
+@media (max-width: 768px) {
+    #introIm {
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    #introIm img {
+        width: 200px;
+    }
+}
+
+@media (max-width: 576px) {
+    #introIm {
+        gap: 30px;
+    }
+
+    #introIm img {
+        width: 180px;
+    }
+}
+
+@media (max-width: 400px) {
+    #introIm {
+        gap: 20px;
+    }
+
+    #introIm img {
+        width: 150px;
+    }
 }
 
 #intrIm img {
     width: 300px;
     border-radius: 12px;
 }
-
 
 #abuelita:hover {
     transform: scale(1.2);
@@ -136,30 +264,49 @@ footer {
 
 .content-with-image {
     display: grid;
-    grid-template-columns: 3fr 2fr;
+    grid-template-columns: 1fr 400px;
     gap: 30px;
-    align-items: center;
     margin: 40px 0;
+    align-items: start;
 }
 
 .content-with-image.image-left {
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 400px 1fr;
 }
 
 .content-with-image img {
     width: 100%;
+    height: 100%;
     border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+    grid-row: 1;
+    object-fit: cover;
 }
 
-.content-with-image img:hover {
-    transform: scale(1.05);
+.content-with-image.image-left img {
+    grid-column: 1;
+}
+
+.content-with-image:not(.image-left) img {
+    grid-column: 2;
 }
 
 .text-content {
+    grid-row: 1;
     text-align: left;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-with-image.image-left .text-content {
+    grid-column: 2;
+}
+
+.content-with-image:not(.image-left) .text-content {
+    grid-column: 1;
 }
 
 .image-caption {
@@ -167,14 +314,28 @@ footer {
     color: #4e342e;
     margin-top: 10px;
     font-style: italic;
+    text-align: center;
 }
 
 @media (max-width: 768px) {
-    .content-with-image {
-        grid-template-columns: 1fr;
-    }
 
+    .content-with-image,
     .content-with-image.image-left {
         grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .content-with-image img,
+    .content-with-image.image-left img {
+        grid-column: 1;
+        grid-row: 1;
+        height: 300px;
+        /* Fixed height for mobile */
+    }
+
+    .content-with-image .text-content,
+    .content-with-image.image-left .text-content {
+        grid-column: 1;
+        grid-row: 2;
     }
 }
